@@ -1,0 +1,80 @@
+{{define "headerStart" }}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web Forum</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {{end}}
+
+    {{define "basicHeaderEnd" }}
+</head>
+
+<body>
+
+    <div class="navigation-bar">
+        <nav>
+            <ul class="nav-class">
+                <a href="/home">
+                    <li>Home <i class="fa fa-home" aria-hidden="true"></i>
+                    </li>
+                </a>
+                <a class="nav-login-logout" href="/register">
+                    <li>Register <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+                </a>
+                <a class="nav-login-logout" href="/login">
+                    <li>Login <i class="fa fa-sign-in" aria-hidden="true"></i></li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+    {{end}}
+
+    {{define "mainHeaderEnd" }}
+    </head>
+
+    <body>
+
+        <div class="navigation-bar">
+            <nav>
+                <ul class="nav-class">
+                    </li>
+                    <a href="/home">
+                        <li>Home <i class="fa fa-home" aria-hidden="true"></i>
+                        </li>
+                    </a>
+                    <a href="/createPost">
+                        <li>New Post <i class="fa fa-plus"></i></li>
+                    </a>
+                    {{if .userId }}
+                    <a class="nav-login-logout" href="/logout">
+                        <li>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></li>
+                    </a>
+                    {{ else }}
+                    <a class="nav-login-logout" href="/register">
+                        <li>Register <i class="fa fa-user-circle" aria-hidden="true"></i></li>
+                    </a>
+                    <a class="nav-login-logout" href="/login">
+                        <li>Login <i class="fa fa-sign-in" aria-hidden="true"></i></li>
+                    </a>
+                    {{ end }}
+                </ul>
+            </nav>
+        </div>
+        
+        {{ if .userId }}
+        <div class="logged-in-user">
+            Logged in as: {{ .username }}
+        </div>
+        {{ end }}
+        <div class="page-header">
+            <h1>{{ .pageName }}</h1>
+        </div>
+        {{end}}

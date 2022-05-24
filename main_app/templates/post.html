@@ -1,0 +1,27 @@
+{{ template "headerStart" }}
+<link rel="stylesheet" href="./css/post.css">
+<link rel="stylesheet" href="./css/comments.css">
+{{ template "mainHeaderEnd" .}}
+
+<div class="post">
+    {{ if .postError}}
+    <h1>Hey, no post here!</h1>
+    <a href="/home">Go home!</a>
+    {{else}}
+    <h3 class="post-title">{{ .post.Title }}</h3>
+    <p class="post-author-details">Author: <span class="post-author-name">{{ .post.AuthorUsername}}</span></p>
+    <p class="post-timestamp">Posted on: <span class="post-tiemstamp-value">{{ .post.FormattedTimestamp}}</span></p>
+    <p class="post-content">
+        {{ .post.Content }}
+    </p>
+</div>
+{{ if .hasComments }}
+{{ template "comments" .}}
+{{ else }}
+{{ template "noComments"}}
+{{end}}
+{{template "createComment"}}
+{{end}}
+
+{{ template "footerDetails" }}
+{{ template "footerCloseDocument" }}

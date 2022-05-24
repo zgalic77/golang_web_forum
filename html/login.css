@@ -1,0 +1,51 @@
+.login-form {
+    display: block;
+    border-bottom: 3px solid #78685f;
+    width: 50%;
+    margin: 2em auto;
+    border: 2px rgb(119, 136, 102) solid;
+    background-color: #93a2aa;
+    font-size: 1.5em;
+    color: #1e2529;
+    overflow: hidden;
+}
+
+.login-form-header, .login-form-footer {
+    padding: 0.3em 0;
+    text-align: center;
+}
+
+.login-form-element {
+    font-size: 1em;
+}
+
+.login-form-element label {
+    display: block;
+    padding-left: 1em;
+    font-style: oblique;
+}
+
+.login-form-element input {
+    width: 90%;
+    margin: 1em auto;
+    padding: 10px 10px;
+    display: block;
+    border: none;
+    background: #f1f1f1;
+}
+
+.login-form-element input:focus {
+    background-color: #ddd;
+    outline: none;
+}
+.login-form-button{
+    font-size: 1em;
+    float: right;
+    margin: 10px;
+    color: #1e2529;
+}
+@media only screen and (max-device-width: 600px) {
+    .login-form {
+        width: 90%;
+    }
+}

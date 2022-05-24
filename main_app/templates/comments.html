@@ -1,0 +1,49 @@
+{{ define "createComment"}}
+<div class="input-comment">
+    <form action="#" method="POST">
+        <p>Leave your comment</p>
+        <textarea class="add-comment-input" name="content" id="content" placeholder="Comment..." required
+            maxlength="600"></textarea>
+        <button class="add-comment-btn" title="Add comment">Add comment</button>
+    </form>
+    {{if .commentError}}
+    <div class="error" style="border: 1px solid red;">Comment was not posted. Please try again.</div>
+    {{end}}
+</div>
+{{end}}
+
+{{define "comments"}}
+<div class="comments-container">
+    {{range $comment := .comments}}
+    <div class="comment">
+        <div class="comment-details">
+            <div class="comment-author">
+                <p>User: {{$comment.AuthorUsername}}</p>
+            </div>
+            <div class="comment-date">
+                <p>- on {{$comment.FormattedTimestamp}}</p>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>{{$comment.Content}}</p>
+        </div>
+    </div>
+    {{end}}
+    <div class="pagination">
+        <p>Page</p>
+    {{range $pageNumber := .paginationValues}}
+    <div class="pageLink">
+        <a href="/post?id={{$.postId}}&page={{$pageNumber}}">{{ $pageNumber }}</a>
+    </div>
+    {{ end }}
+    </div>
+</div>
+{{end}}
+
+{{define "noComments"}}
+<div class="comments-container">
+    <div class="comment">
+        <p>This post has no comments yet.</p>
+    </div>
+</div>
+{{end}}

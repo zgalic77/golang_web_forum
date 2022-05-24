@@ -1,0 +1,30 @@
+{{template "headerStart" }}
+<link rel="stylesheet" href="./css/login.css">
+
+{{template "basicHeaderEnd" }}
+
+<div class="login-form">
+        <form action="#" method="POST">
+                <h1 class="login-form-header">Login</h1>
+                <hr>
+
+                <div class="login-form-element">
+                        <label for="username"><b>Username</b></label>
+                        <input type="text" placeholder="Username" name="username" id="username" required>
+                </div>
+                <div class="login-form-element">
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                </div>
+                <hr>
+                {{if .loginError}}
+                <div class="error-message"><p>Login failed</p></div>
+                {{end}}
+                <div class="login-form-footer">
+                        <button class="login-form-button">Login</button>
+                </div>
+</div>
+</form>
+
+{{ template "footerDetails" }}
+{{ template "footerCloseDocument" }}

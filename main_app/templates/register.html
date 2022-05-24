@@ -1,0 +1,37 @@
+{{ template "headerStart" }}
+<link rel="stylesheet" href="./css/register.css">
+{{ template "basicHeaderEnd" }}
+<div class="register-form">
+    <form action="#" method="POST">
+        <h1 class="register-form-header">Register</h1>
+        <hr>
+
+        <div class="register-form-element{{if .usernameError}} error {{end}}">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Username" name="username" id="username" required>
+        </div>
+        <div class="register-form-element">
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Password" name="password" id="password" required>
+        </div>
+        <div class="register-form-element{{if .emailError}} error {{end}}">
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Email" name="email" id="email" required>
+        </div>
+        {{if .usernameError}}
+        <div class="error-message"><p>Username already in use</p></div>
+        {{else if .emailError}}
+        <div class="error-message"><p>Email already in use</p></div>
+        {{end}}
+        <hr>
+        <div class="register-form-element">
+            <button class="register-form-button">Register</button>
+        </div>
+
+        <div class="register-form-footer">
+            <p>Already have an account? <a href="/login">Sign in</a>.</p>
+        </div>
+    </form>
+</div>
+{{ template "footerDetails" }}
+{{ template "footerCloseDocument" }}
