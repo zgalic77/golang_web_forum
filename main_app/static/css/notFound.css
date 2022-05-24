@@ -1,0 +1,29 @@
+.message-container {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    border: 2px #93a2aa solid;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.message-content{
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3em;
+}
+.home-link{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+@media only screen and (max-device-width: 1000px) {
+    .message {
+        border: none;
+        width: 90%;
+    }
+
+    .message-content, .home-link {
+        display: inline-block;
+        padding: 2px;
+    }
+}

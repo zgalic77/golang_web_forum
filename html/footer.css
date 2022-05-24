@@ -1,0 +1,19 @@
+footer{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: #1e2529;
+    border-top: 2px solid #234252;
+}
+
+.footer-details{
+    color: #93a2aa;
+    font-size: 1em;
+}
+
+.footer-details p{
+    float: left;
+    padding: 1em;
+}

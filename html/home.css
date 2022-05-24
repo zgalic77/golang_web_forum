@@ -1,0 +1,66 @@
+.main-container {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    border: 2px #93a2aa solid;
+    border-radius: 5px;
+    background-color: #234252;
+    color: #1e2529;
+    overflow: hidden;
+}
+
+.post {
+    margin: 1em;
+    color: #333333;
+    background-color: rgb(229, 234, 239);
+    border-radius: 10px;
+    border: 3px solid #93a2aa;
+}
+
+.post:hover {
+    background-color: #2b2e2f;
+    color: #d0d0d0;
+    border: 3px solid darkgray;
+}
+
+.post-title {
+    font-size: 1.3em;
+    padding: 0.7em;
+}
+
+.post-title p {
+    padding: 0.3em;
+}
+
+.post-details {
+    overflow: hidden;
+    padding: 0.7em;
+}
+
+.post-details p {
+    display: inline;
+    padding: 1em;
+}
+
+@media only screen and (max-device-width: 1000px) {
+    .main-container {
+        border: none;
+        width: 90%;
+    }
+
+    .post-details p {
+        display: inline-block;
+        padding: 2px;
+    }
+}
+
+@media only screen and (max-device-width: 600px) {
+    .main-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    .post {
+        font-size: 0.7em;
+    }
+}

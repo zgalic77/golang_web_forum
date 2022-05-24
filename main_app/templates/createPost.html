@@ -1,0 +1,40 @@
+{{template "headerStart" }}
+<link rel="stylesheet" href="./css/createPost.css">
+{{template "mainHeaderEnd" . }}
+
+<div class="new-post-form">
+    {{if .userId }}
+    <form action="#" method="POST">
+        <div class="new-post-element{{if .error}} error {{end}}">
+            <label class="form-label" for="title"><b>Title</b></label>
+            <input class="form-input" type="text" placeholder="Title" name="title" id="title" required>
+        </div>
+
+        <div class="new-post-element">
+            <label class="form-label" for="content"><b>Content</b></label>
+            <textarea class="form-input" rows="10" placeholder="Post content..." name="content" id="content" required maxlength="1500"></textarea>
+        </div>
+
+        <hr>
+        <div class="new-post-footer">
+            <button class="new-post-button">Create</button>
+        </div>
+    </form>
+    {{ else }}
+    <div class="notification">
+        <p>You need to be logged in to create new post.</p>
+        <a href="/login"><p>Go to login page</p></a>
+    </div>
+    {{ end }}
+    {{ if .error}}
+    <div class="notification">
+        <p>{{ .error }}.</p>
+    </div>
+    {{end}}
+</div>
+
+
+{{ template "footerDetails" }}
+
+<script src="./js/textarea.js" type="text/javascript"></script>
+{{ template "footerCloseDocument" }}
