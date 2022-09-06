@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"github.com/valyala/fasthttp"
 )
 
@@ -26,15 +25,6 @@ type UserData struct {
 }
 
 func OpenLogin(c *fiber.Ctx) error {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
-
-	c.Bind(fiber.Map{
-		"LoggedInId":       LoggedInId,
-		"loggedInUsername": LoggedInUsername,
-	})
 	IsUserLoggedIn(c)
 	if LoggedInId != 0 {
 		c.Redirect("/home")
@@ -101,11 +91,17 @@ func Login(c *fiber.Ctx) error {
 func IsUserLoggedIn(c *fiber.Ctx) bool {
 	// Checks if user is already logged in
 	// If user is logged in then set cookie expiration date 48 hours in the future
+	cookieValue := c.Cookies("jwt")
+	if cookieValue == "" {
+		LoggedInUsername = ""
+		LoggedInId = 0
+		return false
+	}
 	request := fasthttp.AcquireRequest()
 	defer fasthttp.ReleaseRequest(request)
 	request.SetRequestURI(os.Getenv("USERS_APP_PATH") + "/user")
 	request.Header.SetContentType("application/json")
-	request.Header.SetCookie("jwt", c.Cookies("jwt"))
+	request.Header.SetCookie("jwt", cookieValue)
 	request.Header.Set("Accept-Encoding", "gzip")
 	resp := fasthttp.AcquireResponse()
 	defer fasthttp.ReleaseResponse(resp)
@@ -130,12 +126,16 @@ func IsUserLoggedIn(c *fiber.Ctx) bool {
 	err = json.Unmarshal(resp.Body(), &userData)
 	if err != nil {
 		fmt.Println(err.Error())
+		LoggedInUsername = ""
+		LoggedInId = 0
 		return false
 	}
 	LoggedInUsername = userData.Username
 	LoggedInId = userData.Id
 	if err != nil {
 		fmt.Println(err.Error())
+		LoggedInUsername = ""
+		LoggedInId = 0
 		return false
 	}
 	return true

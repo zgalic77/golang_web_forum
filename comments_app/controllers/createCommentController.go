@@ -2,14 +2,12 @@ package controllers
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 	"time"
 	"users_app/database"
 	"users_app/models"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 )
 
 func CreateComment(c *fiber.Ctx) error {
@@ -21,7 +19,6 @@ func CreateComment(c *fiber.Ctx) error {
 		})
 	}
 	type Request struct {
-		Id             string `json:"id"`
 		Content        string `json:"content"`
 		PostId         string `json:"postId"`
 		AuthorId       string `json:"authorId"`
@@ -29,15 +26,7 @@ func CreateComment(c *fiber.Ctx) error {
 	}
 	var body Request
 
-	// Get password cost value from .env file
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file.")
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"success": false,
-		})
-	}
-	err = c.BodyParser(&body)
+	err := c.BodyParser(&body)
 	if err != nil {
 		fmt.Println(err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{

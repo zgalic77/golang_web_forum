@@ -19,9 +19,9 @@
             <input type="email" placeholder="Email" name="email" id="email" required>
         </div>
         {{if .usernameError}}
-        <div class="error-message"><p>Username already in use</p></div>
+        <div class="error-msg"><p>Username already in use</p></div>
         {{else if .emailError}}
-        <div class="error-message"><p>Email already in use</p></div>
+        <div class="error-msg"><p>Email already in use</p></div>
         {{end}}
         <hr>
         <div class="register-form-element">

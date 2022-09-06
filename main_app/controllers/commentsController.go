@@ -27,10 +27,7 @@ func CreateComment(c *fiber.Ctx) error {
 	}
 
 	type CreateCommentData struct {
-		PostId         string `json:"postId"`
-		Content        string `json:"content"`
-		AuthorId       string `json:"authorId"`
-		AuthorUsername string `json:"authorUsername"`
+		Content string `json:"content"`
 	}
 	createCommentData := CreateCommentData{}
 	err := c.BodyParser(&createCommentData)

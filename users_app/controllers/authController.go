@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"time"
@@ -11,7 +10,6 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -23,23 +21,19 @@ func Register(c *fiber.Ctx) error {
 	}
 	var body Request
 
-	// Get password cost value from .env file
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file.")
-	}
-	password_cost, err := strconv.Atoi(os.Getenv("PASSWORD_COST"))
-	if err != nil {
-		return err
-	}
-
-	err = c.BodyParser(&body)
+	err := c.BodyParser(&body)
 	if err != nil {
 		fmt.Println(err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"success": false,
 			"message": "Cannot parse JSON",
 		})
+	}
+
+	// Get password cost value from .env file
+	password_cost, err := strconv.Atoi(os.Getenv("PASSWORD_COST"))
+	if err != nil {
+		return err
 	}
 
 	password, err := bcrypt.GenerateFromPassword([]byte(body.Password), password_cost)
@@ -70,18 +64,10 @@ func Login(c *fiber.Ctx) error {
 	}
 	var body Request
 
-	// Get JWT secret key from .env file
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file.")
-	}
-	secret_key := os.Getenv("JWT_KEY")
-	if err != nil {
-		panic(err)
-	}
-
 	if err := c.BodyParser(&body); err != nil {
-		return err
+		return c.JSON(fiber.Map{
+			"message": "Wrong data input.",
+		})
 	}
 
 	// Search for user in the database
@@ -96,7 +82,7 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	// Check if password is correct
-	err = bcrypt.CompareHashAndPassword(user.Password, []byte(body.Password))
+	err := bcrypt.CompareHashAndPassword(user.Password, []byte(body.Password))
 	if err != nil {
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
@@ -106,9 +92,13 @@ func Login(c *fiber.Ctx) error {
 
 	// Create JWT token that is valid for 48 hours
 	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
-		Issuer:    strconv.Itoa(int(user.Id)),
+		Issuer:    os.Getenv("JWT_ISSUER"),
 		ExpiresAt: time.Now().Add(time.Hour * 48).Unix(),
+		Id:        strconv.Itoa(int(user.Id)),
 	})
+
+	// Get JWT secret key from .env file
+	secret_key := os.Getenv("JWT_KEY")
 
 	token, err := claims.SignedString([]byte(secret_key))
 	if err != nil {
@@ -135,16 +125,7 @@ func Login(c *fiber.Ctx) error {
 func User(c *fiber.Ctx) error {
 
 	cookie := c.Cookies("jwt")
-
-	// Get JWT secret key from .env file
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file.")
-	}
 	secret_key := os.Getenv("JWT_KEY")
-	if err != nil {
-		panic(err)
-	}
 
 	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(secret_key), nil
@@ -159,7 +140,7 @@ func User(c *fiber.Ctx) error {
 
 	claims := token.Claims.(*jwt.StandardClaims)
 	var user models.User
-	database.DB.Where("id = ?", claims.Issuer).First(&user)
+	database.DB.Where("id = ?", claims.Id).First(&user)
 	return c.JSON(user)
 }
 

@@ -3,21 +3,15 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"github.com/valyala/fasthttp"
 )
 
 func OpenPost(c *fiber.Ctx) error {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
 
 	type Post struct {
 		Id                 string    `json:"id"`
@@ -51,7 +45,7 @@ func OpenPost(c *fiber.Ctx) error {
 	request.Header.Set("Accept-Encoding", "gzip")
 	resp := fasthttp.AcquireResponse()
 	defer fasthttp.ReleaseResponse(resp)
-	err = fasthttp.Do(request, resp)
+	err := fasthttp.Do(request, resp)
 	if err != nil {
 		fmt.Printf("Client error: %s\n", err)
 	}

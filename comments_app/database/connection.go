@@ -2,11 +2,9 @@ package database
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"users_app/models"
 
-	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -14,11 +12,6 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
 	dsn := fmt.Sprintf("user=%s password=%s dbname=%s",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),

@@ -8,16 +8,10 @@ import (
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"github.com/valyala/fasthttp"
 )
 
 func OpenRegister(c *fiber.Ctx) error {
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
 	IsUserLoggedIn(c)
 	if LoggedInId != 0 {
 		c.Redirect("/home")
