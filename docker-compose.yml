@@ -2,7 +2,7 @@
 version: "1"
 services:
   main_app:
-    image: main_app
+    image: zgalicfoi/main_app:base
     ports:
       - "8000:8000"
     container_name: "main_app"
@@ -11,7 +11,7 @@ services:
       - webforum
 
   users_app:
-    image: users_app
+    image: zgalicfoi/users_app:base
     ports:
       - "8001:8001"
     container_name: "users_app"
@@ -20,7 +20,7 @@ services:
       - webforum
     
   posts_app:
-    image: posts_app
+    image: zgalicfoi/posts_app:base
     ports:
       - "8002:8002"
     container_name: "posts_app"
@@ -29,7 +29,7 @@ services:
       - webforum
 
   comments_app:
-    image: comments_app
+    image: zgalicfoi/comments_app:base
     ports:
       - "8003:8003"
     container_name: "comments_app"
