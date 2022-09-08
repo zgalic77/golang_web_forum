@@ -1,0 +1,119 @@
+# github.com/andybalholm/brotli v1.0.4
+## explicit; go 1.12
+github.com/andybalholm/brotli
+# github.com/dgrijalva/jwt-go v3.2.0+incompatible
+## explicit
+github.com/dgrijalva/jwt-go
+# github.com/gofiber/fiber/v2 v2.31.0
+## explicit; go 1.16
+github.com/gofiber/fiber/v2
+github.com/gofiber/fiber/v2/internal/bytebufferpool
+github.com/gofiber/fiber/v2/internal/colorable
+github.com/gofiber/fiber/v2/internal/dictpool
+github.com/gofiber/fiber/v2/internal/fwd
+github.com/gofiber/fiber/v2/internal/go-json
+github.com/gofiber/fiber/v2/internal/go-json/decoder
+github.com/gofiber/fiber/v2/internal/go-json/encoder
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_color
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_color_indent
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_indent
+github.com/gofiber/fiber/v2/internal/go-json/errors
+github.com/gofiber/fiber/v2/internal/go-json/runtime
+github.com/gofiber/fiber/v2/internal/isatty
+github.com/gofiber/fiber/v2/internal/msgp
+github.com/gofiber/fiber/v2/internal/schema
+github.com/gofiber/fiber/v2/internal/uuid
+github.com/gofiber/fiber/v2/middleware/cors
+github.com/gofiber/fiber/v2/utils
+# github.com/jackc/chunkreader/v2 v2.0.1
+## explicit; go 1.12
+github.com/jackc/chunkreader/v2
+# github.com/jackc/pgconn v1.11.0
+## explicit; go 1.12
+github.com/jackc/pgconn
+github.com/jackc/pgconn/internal/ctxwatch
+github.com/jackc/pgconn/stmtcache
+# github.com/jackc/pgio v1.0.0
+## explicit; go 1.12
+github.com/jackc/pgio
+# github.com/jackc/pgpassfile v1.0.0
+## explicit; go 1.12
+github.com/jackc/pgpassfile
+# github.com/jackc/pgproto3/v2 v2.2.0
+## explicit; go 1.12
+github.com/jackc/pgproto3/v2
+# github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b
+## explicit; go 1.14
+github.com/jackc/pgservicefile
+# github.com/jackc/pgtype v1.10.0
+## explicit; go 1.13
+github.com/jackc/pgtype
+# github.com/jackc/pgx/v4 v4.15.0
+## explicit; go 1.13
+github.com/jackc/pgx/v4
+github.com/jackc/pgx/v4/internal/sanitize
+github.com/jackc/pgx/v4/stdlib
+# github.com/jinzhu/inflection v1.0.0
+## explicit
+github.com/jinzhu/inflection
+# github.com/jinzhu/now v1.1.5
+## explicit; go 1.12
+github.com/jinzhu/now
+# github.com/joho/godotenv v1.4.0
+## explicit; go 1.12
+github.com/joho/godotenv
+# github.com/klauspost/compress v1.15.1
+## explicit; go 1.15
+github.com/klauspost/compress/flate
+github.com/klauspost/compress/gzip
+github.com/klauspost/compress/zlib
+# github.com/valyala/bytebufferpool v1.0.0
+## explicit
+github.com/valyala/bytebufferpool
+# github.com/valyala/fasthttp v1.35.0
+## explicit; go 1.15
+github.com/valyala/fasthttp
+github.com/valyala/fasthttp/fasthttputil
+github.com/valyala/fasthttp/reuseport
+github.com/valyala/fasthttp/stackless
+# github.com/valyala/tcplisten v1.0.0
+## explicit; go 1.12
+github.com/valyala/tcplisten
+# golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
+## explicit; go 1.17
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/pbkdf2
+# golang.org/x/sys v0.0.0-20220412211240-33da011f77ad
+## explicit; go 1.17
+golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+# golang.org/x/text v0.3.7
+## explicit; go 1.17
+golang.org/x/text/cases
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/secure/precis
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+golang.org/x/text/width
+# gorm.io/driver/postgres v1.3.4
+## explicit; go 1.14
+gorm.io/driver/postgres
+# gorm.io/gorm v1.23.4
+## explicit; go 1.14
+gorm.io/gorm
+gorm.io/gorm/callbacks
+gorm.io/gorm/clause
+gorm.io/gorm/logger
+gorm.io/gorm/migrator
+gorm.io/gorm/schema
+gorm.io/gorm/utils

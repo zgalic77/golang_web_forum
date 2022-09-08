@@ -1,4 +1,4 @@
-module users_app
+module comments_app
 
 go 1.17
 

@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"comments_app/database"
+	"comments_app/models"
 	"strconv"
-	"users_app/database"
-	"users_app/models"
 
 	"github.com/gofiber/fiber/v2"
 )

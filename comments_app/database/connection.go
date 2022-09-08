@@ -1,9 +1,9 @@
 package database
 
 import (
+	"comments_app/models"
 	"fmt"
 	"os"
-	"users_app/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -12,7 +12,8 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	dsn := fmt.Sprintf("user=%s password=%s dbname=%s",
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s",
+		os.Getenv("DB_HOST"),
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
 		os.Getenv("DB_NAME"),
