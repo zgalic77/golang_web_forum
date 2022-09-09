@@ -8,5 +8,5 @@ FROM alpine
 WORKDIR /app
 COPY --from=postsbuilder /go/src/posts_app/posts_app /app
 COPY .env /app
-EXPOSE 8002
+EXPOSE 82
 ENTRYPOINT ["./posts_app"]

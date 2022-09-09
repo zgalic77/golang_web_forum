@@ -8,5 +8,5 @@ FROM alpine
 WORKDIR /app
 COPY --from=commentsbuilder /go/src/comments_app/comments_app /app
 COPY .env /app
-EXPOSE 8003
+EXPOSE 83
 ENTRYPOINT ["./comments_app"]

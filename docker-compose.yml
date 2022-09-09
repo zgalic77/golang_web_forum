@@ -6,7 +6,7 @@ services:
     #  context: ./main_app
     image: zgalicfoi/main_app:base
     ports:
-      - "8000:8000"
+      - "80:80"
     container_name: "main_app"
     restart: always
     networks:
@@ -17,7 +17,7 @@ services:
     #  context: ./users_app
     image: zgalicfoi/users_app:base
     ports:
-      - "8001:8001"
+      - "81:81"
     container_name: "users_app"
     restart: always
     networks:
@@ -28,7 +28,7 @@ services:
     #  context: ./posts_app
     image: zgalicfoi/posts_app:base
     ports:
-      - "8002:8002"
+      - "82:82"
     container_name: "posts_app"
     restart: always
     networks:
@@ -39,7 +39,7 @@ services:
     #  context: ./comments_app
     image: zgalicfoi/comments_app:base
     ports:
-      - "8003:8003"
+      - "83:83"
     container_name: "comments_app"
     restart: always
     networks:
