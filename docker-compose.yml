@@ -1,7 +1,9 @@
 # Specify the version number
-version: "1"
+version: "3"
 services:
   main_app:
+    #build:
+    #  context: ./main_app
     image: zgalicfoi/main_app:base
     ports:
       - "8000:8000"
@@ -11,6 +13,8 @@ services:
       - webforum
 
   users_app:
+    #build:
+    #  context: ./users_app
     image: zgalicfoi/users_app:base
     ports:
       - "8001:8001"
@@ -20,6 +24,8 @@ services:
       - webforum
     
   posts_app:
+    #build:
+    #  context: ./posts_app
     image: zgalicfoi/posts_app:base
     ports:
       - "8002:8002"
@@ -29,6 +35,8 @@ services:
       - webforum
 
   comments_app:
+    #build:
+    #  context: ./comments_app
     image: zgalicfoi/comments_app:base
     ports:
       - "8003:8003"
@@ -39,4 +47,3 @@ services:
 
 networks:
   webforum:
-    driver: bridge
